@@ -51,6 +51,13 @@ public class PathBasedExtraStorageOptions
   /** The bonsai limit trie logs enabled option name */
   public static final String LIMIT_TRIE_LOGS_ENABLED = "--bonsai-limit-trie-logs-enabled";
 
+  /**
+   * @deprecated Use TRIE_LOG_PRUNING_BATCH_SIZE instead
+   */
+  @Deprecated
+  public static final String TRIE_LOG_PRUNING_WINDOW_SIZE =
+      "--bonsai-trie-logs-pruning-window-size";
+
   /** The bonsai trie logs pruning batch size. */
   public static final String TRIE_LOG_PRUNING_BATCH_SIZE = "--bonsai-trie-logs-pruning-batch-size";
 
@@ -70,9 +77,13 @@ public class PathBasedExtraStorageOptions
   @Option(
       names = {
         TRIE_LOG_PRUNING_BATCH_SIZE,
+        TRIE_LOG_PRUNING_WINDOW_SIZE // deprecated
       },
       description =
-          "The batch size for processing trie log pruning at startup. (default: ${DEFAULT-VALUE})")
+          "The batch size for processing trie log pruning at startup. "
+              + "Note: --bonsai-trie-logs-pruning-window-size is deprecated, "
+              + "use --bonsai-trie-logs-pruning-batch-size instead. "
+              + "(default: ${DEFAULT-VALUE})")
   private Integer trieLogPruningBatchSize = DEFAULT_TRIE_LOG_PRUNING_BATCH_SIZE;
 
   @Option(
